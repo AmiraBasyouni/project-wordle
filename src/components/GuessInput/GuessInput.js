@@ -2,7 +2,12 @@ import React from "react";
 
 import { NUM_OF_GUESSES_ALLOWED } from "../../constants.js";
 
-function GuessInput({ pastGuesses, setPastGuesses, setEndGameResult, answer }) {
+function GuessInput({
+	guessHistory,
+	setGuessHistory,
+	setEndGameResult,
+	answer,
+}) {
 	const [guess, setGuess] = React.useState("");
 	const [inputDisabled, setInputDisabled] = React.useState(false);
 
@@ -11,13 +16,13 @@ function GuessInput({ pastGuesses, setPastGuesses, setEndGameResult, answer }) {
 		//console.info({ guess });
 
 		// update guess history
-		const newPastGuesses = [...pastGuesses];
-		newPastGuesses.push({
+		const newGuessHistory = [...guessHistory];
+		newGuessHistory.push({
 			guess,
 			id: Math.random(),
 		});
-		console.log(newPastGuesses);
-		setPastGuesses(newPastGuesses);
+		console.log(newGuessHistory);
+		setGuessHistory(newGuessHistory);
 		setGuess("");
 
 		// EndGame check
@@ -25,7 +30,7 @@ function GuessInput({ pastGuesses, setPastGuesses, setEndGameResult, answer }) {
 			setEndGameResult("win");
 			setInputDisabled(true);
 		}
-		if (newPastGuesses.length >= NUM_OF_GUESSES_ALLOWED) {
+		if (newGuessHistory.length >= NUM_OF_GUESSES_ALLOWED) {
 			setEndGameResult("lose");
 			setInputDisabled(true);
 			return;

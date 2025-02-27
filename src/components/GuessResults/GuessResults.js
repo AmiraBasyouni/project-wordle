@@ -5,12 +5,12 @@ import { range } from "../../utils.js";
 
 import Guess from "../Guess";
 
-function GuessResults({ pastGuesses, answer }) {
+function GuessResults({ guessHistory, answer }) {
 	return (
 		<div className="guess-results">
 			{
 				// render user's guesses
-				pastGuesses.map(({ guess, id }) => (
+				guessHistory.map(({ guess, id }) => (
 					<Guess
 						guess={guess}
 						answer={answer}
@@ -22,7 +22,7 @@ function GuessResults({ pastGuesses, answer }) {
 				// render remaining guesses allowed
 				range(
 					NUM_OF_GUESSES_ALLOWED -
-						pastGuesses.length
+						guessHistory.length
 				).map(() => (
 					<Guess key={Math.random()} />
 				))

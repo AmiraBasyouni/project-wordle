@@ -14,24 +14,24 @@ const answer = sample(WORDS);
 console.info({ answer });
 
 function Game() {
-	const [pastGuesses, setPastGuesses] = React.useState([]);
+	const [guessHistory, setGuessHistory] = React.useState([]);
 	const [endGameResult, setEndGameResult] = React.useState("inProgress"); // inProgress, win, lose
 	return (
 		<>
 			<GuessResults
-				pastGuesses={pastGuesses}
+				guessHistory={guessHistory} // renders user's guesses
 				answer={answer} // answer to check correctness of each letter on render
 			/>
 			<GuessInput
-				pastGuesses={pastGuesses}
-				setPastGuesses={setPastGuesses}
+				guessHistory={guessHistory} // makes a copy of guessHistory to update the state
+				setGuessHistory={setGuessHistory} // updates guessHistory after every form submission
 				setEndGameResult={setEndGameResult}
 				answer={answer} // answer to check if end of game is reached
 			/>
 			{endGameResult === "inProgress" ? undefined : (
 				<GameOverBanner
 					win={endGameResult === "win"}
-					numOfAttempts={pastGuesses.length}
+					numOfAttempts={guessHistory.length} // helps render win message
 					answer={answer} // answer rendered when user loses
 				/>
 			)}
