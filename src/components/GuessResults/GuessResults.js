@@ -5,13 +5,17 @@ import { range } from "../../utils.js";
 
 import Guess from "../Guess";
 
-function GuessResults({ pastGuesses }) {
+function GuessResults({ pastGuesses, answer }) {
 	return (
 		<div className="guess-results">
 			{
 				// render user's guesses
 				pastGuesses.map(({ guess, id }) => (
-					<Guess guess={guess} key={id} />
+					<Guess
+						guess={guess}
+						answer={answer}
+						key={id}
+					/>
 				))
 			}
 			{
