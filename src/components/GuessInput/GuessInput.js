@@ -2,18 +2,15 @@ import React from "react";
 
 import { NUM_OF_GUESSES_ALLOWED } from "../../constants.js";
 
-function GuessInput({ pastGuesses, setPastGuesses }) {
+function GuessInput({ pastGuesses, setPastGuesses, setEndGameResult, answer }) {
 	const [guess, setGuess] = React.useState("");
+	const [inputDisabled, setInputDisabled] = React.useState(false);
 
 	function handleSubmit(event) {
 		event.preventDefault();
+		//console.info({ guess });
 
-		if (pastGuesses.length >= NUM_OF_GUESSES_ALLOWED) {
-			window.alert("you have a maximum of 5 guesses");
-			return;
-		}
-
-		console.info({ guess });
+		// update guess history
 		const newPastGuesses = [...pastGuesses];
 		newPastGuesses.push({
 			guess,
@@ -22,6 +19,17 @@ function GuessInput({ pastGuesses, setPastGuesses }) {
 		console.log(newPastGuesses);
 		setPastGuesses(newPastGuesses);
 		setGuess("");
+
+		// EndGame check
+		if (guess === answer) {
+			setEndGameResult("win");
+			setInputDisabled(true);
+		}
+		if (newPastGuesses.length >= NUM_OF_GUESSES_ALLOWED) {
+			setEndGameResult("lose");
+			setInputDisabled(true);
+			return;
+		}
 	}
 
 	return (
@@ -31,6 +39,7 @@ function GuessInput({ pastGuesses, setPastGuesses }) {
 		>
 			<label htmlFor="guess-input">Enter guess:</label>
 			<input
+				disabled={inputDisabled}
 				id="guess-input"
 				type="text"
 				pattern="[A-Z]{5}"
