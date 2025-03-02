@@ -5,7 +5,7 @@ import { range } from "../../utils.js";
 
 import Guess from "../Guess";
 
-function GuessResults({ guessHistory, answer }) {
+function RenderGuessHistory({ guessHistory, answer }) {
 	return (
 		<div className="guess-results">
 			{
@@ -31,4 +31,4 @@ function GuessResults({ guessHistory, answer }) {
 	);
 }
 
-export default GuessResults;
+export default RenderGuessHistory;

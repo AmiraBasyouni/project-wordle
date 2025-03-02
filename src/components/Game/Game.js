@@ -5,7 +5,7 @@ import { WORDS } from "../../data";
 
 // importing React Component
 import GuessInput from "../GuessInput";
-import GuessResults from "../GuessResults";
+import RenderGuessHistory from "../RenderGuessHistory";
 import GameOverBanner from "../GameOverBanner";
 
 // Pick a random word on every pageload.
@@ -18,7 +18,7 @@ function Game() {
 	const [endGameResult, setEndGameResult] = React.useState("inProgress"); // inProgress, win, lose
 	return (
 		<>
-			<GuessResults
+			<RenderGuessHistory
 				guessHistory={guessHistory} // renders user's guesses
 				answer={answer} // answer to check correctness of each letter on render
 			/>
