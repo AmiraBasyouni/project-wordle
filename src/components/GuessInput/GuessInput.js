@@ -23,14 +23,15 @@ function GuessInput({
 		});
 		console.log(newGuessHistory);
 		setGuessHistory(newGuessHistory);
+
+		// reset input value
 		setGuess("");
 
 		// EndGame check
 		if (guess === answer) {
 			setEndGameResult("win");
 			setInputDisabled(true);
-		}
-		if (newGuessHistory.length >= NUM_OF_GUESSES_ALLOWED) {
+		} else if (newGuessHistory.length >= NUM_OF_GUESSES_ALLOWED) {
 			setEndGameResult("lose");
 			setInputDisabled(true);
 			return;
