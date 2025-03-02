@@ -1,12 +1,13 @@
 import React from "react";
 
 import { sample } from "../../utils";
-import { WORDS } from "../../data";
+import { WORDS, LETTERS } from "../../data";
 
 // importing React Component
 import GuessInput from "../GuessInput";
 import RenderGuessHistory from "../RenderGuessHistory";
 import GameOverBanner from "../GameOverBanner";
+import VisualKeyboard from "../VisualKeyboard";
 
 // Pick a random word on every pageload.
 const answer = sample(WORDS);
@@ -15,7 +16,13 @@ console.info({ answer });
 
 function Game() {
 	const [guessHistory, setGuessHistory] = React.useState([]);
-	const [endGameResult, setEndGameResult] = React.useState("inProgress"); // inProgress, win, lose
+	const [endGameResult, setEndGameResult] = React.useState("inProgress"); // values: inProgress, win, lose
+	const [keyboardStatus, setKeyboardStatus] = React.useState({
+		// row_1, row_2, row_3
+		...LETTERS[0],
+		...LETTERS[1],
+		...LETTERS[2],
+	});
 	return (
 		<>
 			<RenderGuessHistory
@@ -27,7 +34,10 @@ function Game() {
 				setGuessHistory={setGuessHistory} // updates guessHistory after every form submission
 				setEndGameResult={setEndGameResult}
 				answer={answer} // answer to check if end of game is reached
+				keyboardStatus={keyboardStatus}
+				setKeyboardStatus={setKeyboardStatus}
 			/>
+			<VisualKeyboard keyboardStatus={keyboardStatus} />
 			{endGameResult === "inProgress" ? undefined : (
 				<GameOverBanner
 					win={endGameResult === "win"}

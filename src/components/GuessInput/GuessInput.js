@@ -1,15 +1,49 @@
 import React from "react";
 
 import { NUM_OF_GUESSES_ALLOWED } from "../../constants.js";
+import { checkGuess } from "../../game-helpers.js";
 
 function GuessInput({
 	guessHistory,
 	setGuessHistory,
 	setEndGameResult,
 	answer,
+	keyboardStatus,
+	setKeyboardStatus,
 }) {
 	const [guess, setGuess] = React.useState("");
 	const [inputDisabled, setInputDisabled] = React.useState(false);
+
+	function styleKeyboard() {
+		if (guess === "") {
+			return "cell";
+		}
+
+		const newKeyboardStatus = { ...keyboardStatus };
+		// for each letter in the keyboard,
+		// update its status based on
+		// the correctness of the user's guess
+		for (let i = 0; i < guess.length; i++) {
+			const letterGuessedAtI = guess[i];
+			const letterStatus = checkGuess(guess, answer)[i][
+				"status"
+			];
+
+			// check if a status update for this key is needed
+			if (
+				keyboardStatus[letterGuessedAtI] ===
+					"unknown" ||
+				keyboardStatus[letterGuessedAtI] ===
+					"misplaced" ||
+				keyboardStatus[letterGuessedAtI] === "incorrect"
+			) {
+				// update key's status
+				newKeyboardStatus[letterGuessedAtI] =
+					letterStatus;
+			}
+		}
+		setKeyboardStatus(newKeyboardStatus);
+	}
 
 	function handleSubmit(event) {
 		event.preventDefault();
@@ -23,6 +57,9 @@ function GuessInput({
 		});
 		console.log(newGuessHistory);
 		setGuessHistory(newGuessHistory);
+
+		// update visual keyboard
+		styleKeyboard();
 
 		// reset input value
 		setGuess("");

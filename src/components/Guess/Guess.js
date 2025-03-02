@@ -3,17 +3,19 @@ import { range } from "../../utils";
 import { checkGuess } from "../../game-helpers.js";
 
 function Guess({ guess = "", answer }) {
-	function styleLetterResult(guess, answer, i) {
+	function styleLetter(guess, answer, i) {
 		if (guess === "") {
 			return "cell";
 		}
-		return `cell ${checkGuess(guess, answer)[i]["status"]}`;
+		const letterStatus = checkGuess(guess, answer)[i]["status"];
+
+		return `cell ${letterStatus}`;
 	}
 	return (
 		<p className="guess">
 			{range(5).map((i) => (
 				<span
-					className={styleLetterResult(
+					className={styleLetter(
 						guess,
 						answer,
 						i
