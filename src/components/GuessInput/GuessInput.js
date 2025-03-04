@@ -10,9 +10,10 @@ function GuessInput({
 	answer,
 	keyboardStatus,
 	setKeyboardStatus,
+	inputDisabled,
+	setInputDisabled,
 }) {
 	const [guess, setGuess] = React.useState("");
-	const [inputDisabled, setInputDisabled] = React.useState(false);
 
 	function styleKeyboard() {
 		if (guess === "") {
@@ -55,7 +56,7 @@ function GuessInput({
 			guess,
 			id: Math.random(),
 		});
-		console.log(newGuessHistory);
+		//console.log(newGuessHistory);
 		setGuessHistory(newGuessHistory);
 
 		// update visual keyboard

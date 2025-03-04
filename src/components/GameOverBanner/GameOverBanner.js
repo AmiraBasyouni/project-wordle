@@ -3,7 +3,7 @@ import React from "react";
 // win: boolean
 // numOfAttempts: integer
 // answer: string
-function GameOverBanner({ win, numOfAttempts, answer }) {
+function GameOverBanner({ win, numOfAttempts, answer, playAgainHandler }) {
 	function winBanner(num) {
 		return (
 			<p>
@@ -27,6 +27,11 @@ function GameOverBanner({ win, numOfAttempts, answer }) {
 	return (
 		<div className={win ? "happy banner" : "sad banner"}>
 			{win ? winBanner() : loseBanner()}
+			<p>
+				click{" "}
+				<button onClick={playAgainHandler}>here</button>{" "}
+				to play again!
+			</p>
 		</div>
 	);
 }

@@ -38,6 +38,7 @@ button {
   cursor: pointer;
   text-align: left;
   color: inherit;
+  text-decoration: underline;
 }
 
 .wrapper {
