@@ -1,11 +1,14 @@
 import React from "react";
+import Guess from "../Guess";
+import { range } from "../../utils";
+import { NUM_OF_GUESSES_ALLOWED } from "../../constants";
 
 function GuessLog({ guessLog }) {
-
+  /* render submitted guesses. For each guess remaining, render empty slots */
   return (
     <div className="guess-results">
-      {guessLog.map((guess, index) => (
-        <p key={index} className="guess">{guess}</p>
+      {range(NUM_OF_GUESSES_ALLOWED).map((i) => (
+        <Guess key={i} guess={i < guessLog.length ? guessLog[i] : ""} />
       ))}
     </div>
   );
