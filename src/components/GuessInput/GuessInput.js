@@ -83,6 +83,8 @@ function GuessInput({
 		>
 			<label htmlFor="guess-input">Enter guess:</label>
 			<input
+				required
+				title="enter a five letter word"
 				disabled={inputDisabled}
 				id="guess-input"
 				type="text"
