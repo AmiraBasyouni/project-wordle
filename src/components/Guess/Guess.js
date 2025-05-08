@@ -2,16 +2,9 @@ import React from "react";
 import { checkGuess } from "../../game-helpers";
 import { range } from "../../utils";
 import { NUM_OF_LETTERS } from "../../constants";
-import { sample } from "../../utils";
-import { WORDS } from "../../data";
-
-/* Pick a random word on every pageload. */
-const answer = sample(WORDS);
-/* To make debugging easier, we'll log the solution in the console. */
-console.info({ answer });
 
 
-function Guess({ guess }) {
+function Guess({ guess, answer }) {
   const letter_status = checkGuess(guess, answer);
 
   function fetchStatus(i) {
