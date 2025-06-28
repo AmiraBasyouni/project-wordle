@@ -3,43 +3,15 @@ import GuessInput from "../GuessInput";
 import GuessLog from "../GuessLog";
 import HappyBanner from "../HappyBanner";
 import SadBanner from "../SadBanner";
-import { sample } from "../../utils";
-import { WORDS } from "../../data";
-import { NUM_OF_GUESSES_ALLOWED } from "../../constants";
 
-/* Pick a random word on every pageload. */
-const answer = sample(WORDS);
-/* To make debugging easier, we'll log the solution in the console. */
-console.info({ answer });
+import { GameContext } from "GameProvider";
 
 function Game() {
-  const [guessLog, setGuessLog] = React.useState([]);
-  const [gameStatus, setGameStatus] = React.useState("inProgress");
-  // possible-values: inProgress, won, lost
-
-  function hasCorrectGuess(guess) {
-    return guess === answer;
-  }
-  function hasMaxNumOfAttempts(numOfAttempts) {
-    return numOfAttempts >= NUM_OF_GUESSES_ALLOWED;
-  }
-  function updateGameStatus(guess, numOfAttempts) {
-    if (hasCorrectGuess(guess)) {
-      setGameStatus("won");
-    }
-    if (hasMaxNumOfAttempts(numOfAttempts) && !hasCorrectGuess(guess)) {
-      setGameStatus("lost");
-    }
-  }
-  function appendToGuessLog(guess) {
-    const nextGuessLog = [...guessLog, guess];
-    setGuessLog(nextGuessLog);
-    updateGameStatus(guess, nextGuessLog.length);
-  }
-
+  const { guessLog, answer, appendToGuessLog, gameStatus } =
+    React.useContext(GameContext);
   return (
     <>
-      <GuessLog guessLog={guessLog} answer={answer} />
+      <GuessLog />
       <GuessInput
         appendToGuessLog={appendToGuessLog}
         answer={answer}

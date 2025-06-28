@@ -1,7 +1,7 @@
-import React from 'react';
+import React from "react";
 
-function Banner() {
-  return <div></div>;
+function Banner({ children, banner_type }) {
+  return <div className={`${banner_type} banner`}>{children}</div>;
 }
 
 export default Banner;

@@ -3,12 +3,14 @@ import { checkGuess } from "../../game-helpers";
 import { range } from "../../utils";
 import { NUM_OF_LETTERS } from "../../constants";
 
+import { GameContext } from "../GameProvider";
 
-function Guess({ guess, answer }) {
+function Guess() {
+  const { guess, answer } = React.useContext(GameContext);
   const letter_status = checkGuess(guess, answer);
 
   function fetchStatus(i) {
-    return guess ? ` ${letter_status[i]["status"]}` : '';
+    return guess ? ` ${letter_status[i]["status"]}` : "";
   }
 
   /* Render each guess letter. If guess is empty, render a row of empty cells. */

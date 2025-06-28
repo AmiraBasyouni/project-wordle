@@ -4,8 +4,8 @@ import { NUM_OF_LETTERS } from "../../constants";
 function GuessInput({ appendToGuessLog, gameIsOver }) {
   const [guess, setGuess] = React.useState("");
 
-  function handleSubmit(event) {
-    event.preventDefault();
+  function handleSubmit(e) {
+    e.preventDefault();
     appendToGuessLog(guess);
     console.info({ guess });
     setGuess("");
@@ -22,7 +22,7 @@ function GuessInput({ appendToGuessLog, gameIsOver }) {
         pattern={`[A-Z]{${NUM_OF_LETTERS}}`}
         title="5 letter word"
         value={guess}
-        onChange={(event) => setGuess(event.target.value.toUpperCase())}
+        onChange={(e) => setGuess(e.target.value.toUpperCase())}
       />
     </form>
   );
