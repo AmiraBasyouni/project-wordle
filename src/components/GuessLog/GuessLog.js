@@ -1,11 +1,12 @@
 import React from "react";
 import Guess from "../Guess";
 import { range } from "../../utils";
+import { NUM_OF_GUESSES_ALLOWED } from "../../constants";
 
 import { GameContext } from "../GameProvider";
 
 function GuessLog() {
-  const { NUM_OF_GUESSES_ALLOWED, guessLog } = React.useContext(GameContext);
+  const { guessLog } = React.useContext(GameContext);
 
   /* render submitted guesses. For each guess remaining, render empty slots */
   return (

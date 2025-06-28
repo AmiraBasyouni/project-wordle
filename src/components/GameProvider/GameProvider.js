@@ -44,7 +44,6 @@ function GameProvider({ children }) {
       guessLog,
       gameStatus,
       appendToGuessLog,
-      NUM_OF_GUESSES_ALLOWED,
     };
   }, [guessLog, gameStatus, guess]);
 
