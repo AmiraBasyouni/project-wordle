@@ -3,8 +3,8 @@ import { NUM_OF_LETTERS } from "../../constants";
 
 import { GameContext } from "../GameProvider";
 
-function GuessInput({ appendToGuessLog, gameIsOver }) {
-  const { guess, setGuess } = React.useContext(GameContext);
+function GuessInput({ gameIsOver }) {
+  const { guess, setGuess, appendToGuessLog } = React.useContext(GameContext);
 
   function handleSubmit(e) {
     e.preventDefault();
