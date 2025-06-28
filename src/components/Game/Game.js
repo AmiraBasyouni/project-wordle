@@ -4,7 +4,7 @@ import GuessLog from "../GuessLog";
 import HappyBanner from "../HappyBanner";
 import SadBanner from "../SadBanner";
 
-import { GameContext } from "GameProvider";
+import { GameContext } from "../GameProvider";
 
 function Game() {
   const { guessLog, answer, appendToGuessLog, gameStatus } =

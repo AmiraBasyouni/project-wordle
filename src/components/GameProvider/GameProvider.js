@@ -11,6 +11,7 @@ console.info({ answer });
 export const GameContext = React.createContext();
 
 function GameProvider({ children }) {
+  const [guess, setGuess] = React.useState("");
   const [guessLog, setGuessLog] = React.useState([]);
   const [gameStatus, setGameStatus] = React.useState("inProgress");
   // gameStatus: 'inProgress' | 'won' | 'lost'
@@ -36,8 +37,16 @@ function GameProvider({ children }) {
       updateGameStatus(guess, nextGuessLog.length);
     }
 
-    return { guessLog, gameStatus, appendToGuessLog };
-  }, [guessLog, gameStatus]);
+    return {
+      guess,
+      setGuess,
+      answer,
+      guessLog,
+      gameStatus,
+      appendToGuessLog,
+      NUM_OF_GUESSES_ALLOWED,
+    };
+  }, [guessLog, gameStatus, guess]);
 
   return <GameContext.Provider value={value}>{children}</GameContext.Provider>;
 }

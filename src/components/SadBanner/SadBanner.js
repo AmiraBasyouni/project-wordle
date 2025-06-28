@@ -6,7 +6,7 @@ import { GameContext } from "../GameProvider";
 function SadBanner() {
   const { answer } = React.useContext(GameContext);
   return (
-    <Banner bannerType="sad">
+    <Banner banner_type="sad">
       <p>
         Sorry, the correct answer is <strong>{answer}</strong>.
       </p>

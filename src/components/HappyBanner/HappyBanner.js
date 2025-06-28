@@ -6,10 +6,13 @@ import { GameContext } from "../GameProvider";
 function HappyBanner() {
   const { guessLog } = React.useContext(GameContext);
   return (
-    <Banner type="happy">
+    <Banner banner_type="happy">
       <p>
         <strong>Congratulations!</strong> Got it in{" "}
-        <strong>{` ${guessLog.length} `} guesses</strong>.
+        <strong>
+          {` ${guessLog.length} `} guess{guessLog.length > 1 ? "es" : ""}
+        </strong>
+        .
       </p>
     </Banner>
   );

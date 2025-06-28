@@ -1,8 +1,10 @@
 import React from "react";
 import { NUM_OF_LETTERS } from "../../constants";
 
+import { GameContext } from "../GameProvider";
+
 function GuessInput({ appendToGuessLog, gameIsOver }) {
-  const [guess, setGuess] = React.useState("");
+  const { guess, setGuess } = React.useContext(GameContext);
 
   function handleSubmit(e) {
     e.preventDefault();

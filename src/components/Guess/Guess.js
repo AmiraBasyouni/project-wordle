@@ -5,8 +5,8 @@ import { NUM_OF_LETTERS } from "../../constants";
 
 import { GameContext } from "../GameProvider";
 
-function Guess() {
-  const { guess, answer } = React.useContext(GameContext);
+function Guess({ guess }) {
+  const { answer } = React.useContext(GameContext);
   const letter_status = checkGuess(guess, answer);
 
   function fetchStatus(i) {
