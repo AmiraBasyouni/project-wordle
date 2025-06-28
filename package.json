@@ -1,7 +1,6 @@
 {
   "name": "word-game",
   "version": "0.1.0",
-  "homepage": "http://amirabasyouni.com/project-wordle",
   "private": true,
   "author": "Josh Comeau <me@joshwcomeau.com>",
   "dependencies": {
@@ -16,15 +15,10 @@
     "rimraf": "5.0.1"
   },
   "scripts": {
-    "predeploy": "npm run build",
-    "deploy": "gh-pages -d dist",
     "predev": "rimraf .parcel-cache dist",
     "dev": "parcel public/index.html",
     "build": "parcel build public/index.html",
     "new-component": "new-component"
   },
-  "browserslist": "> 0.5%, last 2 versions, not dead",
-  "devDependencies": {
-    "gh-pages": "^6.3.0"
-  }
+  "browserslist": "> 0.5%, last 2 versions, not dead"
 }
