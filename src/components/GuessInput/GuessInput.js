@@ -2,14 +2,46 @@ import React from "react";
 import { NUM_OF_LETTERS } from "../../constants";
 
 import { GameContext } from "../GameProvider";
+//import { useStyleKeyboard } from "../../hooks/useStyleKeyboard";
+import { checkGuess } from "../../game-helpers";
 
-function GuessInput({ gameIsOver }) {
-  const { guess, setGuess, appendToGuessLog } = React.useContext(GameContext);
+function GuessInput({ gameIsOver, keyboardStatus, setKeyboardStatus }) {
+  const { guess, setGuess, appendToGuessLog, answer } =
+    React.useContext(GameContext);
+
+  function styleKeyboard() {
+    if (guess === "") {
+      return "cell";
+    }
+
+    console.log({ keyboardStatus });
+    const newKeyboardStatus = { ...keyboardStatus };
+    console.log({ newKeyboardStatus });
+    // for each letter in the keyboard,
+    // update its status based on
+    // the correctness of the user's guess
+    for (let i = 0; i < guess.length; i++) {
+      const letterGuessedAtI = guess[i];
+      const letterStatus = checkGuess(guess, answer)[i]["status"];
+
+      // check if a status update for this key is needed
+      if (
+        keyboardStatus[letterGuessedAtI] === "unknown" ||
+        keyboardStatus[letterGuessedAtI] === "misplaced" ||
+        keyboardStatus[letterGuessedAtI] === "incorrect"
+      ) {
+        // update key's status
+        newKeyboardStatus[letterGuessedAtI] = letterStatus;
+      }
+    }
+    setKeyboardStatus(newKeyboardStatus);
+  }
 
   function handleSubmit(e) {
     e.preventDefault();
     appendToGuessLog(guess);
     console.info({ guess });
+    styleKeyboard();
     setGuess("");
   }
 
