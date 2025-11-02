@@ -14,9 +14,7 @@ function GuessInput({ gameIsOver, keyboardStatus, setKeyboardStatus }) {
       return "cell";
     }
 
-    console.log({ keyboardStatus });
     const newKeyboardStatus = { ...keyboardStatus };
-    console.log({ newKeyboardStatus });
     // for each letter in the keyboard,
     // update its status based on
     // the correctness of the user's guess

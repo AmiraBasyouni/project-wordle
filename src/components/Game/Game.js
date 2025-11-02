@@ -7,23 +7,9 @@ import SadBanner from "../SadBanner";
 
 import { GameContext } from "../GameProvider";
 
-const ALPHABET = [
-  ["Q", "W", "E", "R", "T", "Y", "U", "I", "O", "P"],
-  ["A", "S", "D", "F", "G", "H", "J", "K", "L"],
-  ["Z", "X", "C", "V", "B", "N", "M"],
-];
-const keyboard = {};
-
 function Game() {
-  const { guessLog, gameStatus } = React.useContext(GameContext);
-  const [keyboardStatus, setKeyboardStatus] = React.useState(() => {
-    ALPHABET.forEach((row) => {
-      row.forEach((letter) => {
-        keyboard[letter] = "unknown";
-      });
-    });
-    return keyboard;
-  });
+  const { guessLog, gameStatus, keyboardStatus, setKeyboardStatus } =
+    React.useContext(GameContext);
   return (
     <>
       <GuessLog />
