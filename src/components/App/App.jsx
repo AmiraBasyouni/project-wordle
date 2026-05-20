@@ -1,16 +1,15 @@
-import React from 'react';
+import React from "react";
 
-import Game from '../Game';
-import Header from '../Header';
+import Game from "../Game";
+import Header from "../Header";
 
-import GameProvider from '../GameProvider';
+import GameProvider from "../GameProvider";
 
 function App() {
   return (
     <GameProvider>
       <div className="wrapper">
         <Header />
-
         <div className="game-wrapper">
           <Game />
         </div>
