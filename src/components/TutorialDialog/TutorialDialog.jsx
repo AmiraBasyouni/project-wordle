@@ -1,6 +1,6 @@
 import React from "react";
 
-import { Dialog } from "radix-ui";
+import * as Dialog from "@radix-ui/react-dialog";
 
 const TutorialDialog = () => (
   <Dialog.Root defaultOpen>
@@ -13,7 +13,7 @@ const TutorialDialog = () => (
         <Dialog.Title>Tutorial</Dialog.Title>
         <Dialog.Description className="DialogDescription">
           Your goal is to guess a five letter word. <br />
-          You have six attempts. <br />
+          You have 6 attempts. <br />
           The visual keyboard is not interactive. <br />
           <br />
           Progress <br />

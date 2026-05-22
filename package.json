@@ -4,21 +4,26 @@
   "private": true,
   "author": "Josh Comeau <me@joshwcomeau.com>",
   "dependencies": {
+    "@radix-ui/react-dialog": "^1.1.15",
+    "process": "0.11.10",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0"
+  },
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "clean": "rimraf dist",
+    "new-component": "new-component"
+  },
+  "browserslist": "> 0.5%, last 2 versions, not dead",
+  "devDependencies": {
+    "@vitejs/plugin-vue": "^6.0.7",
     "eslint": "8.49.0",
     "eslint-config-react-app": "7.0.1",
     "new-component": "5.0.2",
-    "parcel": "2.12.0",
     "prettier": "2.6.2",
-    "process": "0.11.10",
-    "react": "^19.0.0",
-    "react-dom": "^19.0.0",
-    "rimraf": "5.0.1"
-  },
-  "scripts": {
-    "predev": "rimraf .parcel-cache dist",
-    "dev": "parcel public/index.html",
-    "build": "parcel build public/index.html",
-    "new-component": "new-component"
-  },
-  "browserslist": "> 0.5%, last 2 versions, not dead"
+    "rimraf": "5.0.1",
+    "vite": "^8.0.13"
+  }
 }
